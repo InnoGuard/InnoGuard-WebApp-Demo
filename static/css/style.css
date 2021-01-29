@@ -1,0 +1,85 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800);
+*,body{
+	font-family: 'Raleway', sans-serif;
+	-webkit-transition: all 0.3s ease 0s;
+	-moz-transition: all 0.3s ease 0s;
+	transition: all 0.3s ease 0s;
+}
+
+html,
+body,
+header,
+#intro {
+    height: 100%;
+}
+
+#intro {
+    background: url("../images/landing_img_blur.jpg")no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.top-nav-collapse {
+    background-color: #24355C;
+  }
+  @media (max-width: 768px) {
+    .navbar:not(.top-nav-collapse) {
+      background-color: #24355C;
+    }
+  }
+  @media (min-width: 800px) and (max-width: 850px) {
+    .navbar:not(.top-nav-collapse) {
+      background-color: #24355C;
+    }
+  }
+
+.header-text-2 {
+    margin-top: 30px;
+    font-size: 78px;
+    font-weight: 100;
+    text-transform: uppercase;
+    /* letter-spacing: 30px; */
+}
+
+.header-text-3 {
+    margin-top: 30px;
+    font-size: 17px;
+    text-transform: uppercase;
+}
+
+.demo-button {
+    display: inline-block;
+    color: #ffffff;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    border: 2px solid #ffffff;
+    border-radius: 12px;
+    background-color: rgba(255,255,255,0.0);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 45px;
+    padding-left: 45px;
+    font-size: 27px;
+    cursor: pointer;
+    font-weight: 100;
+}
+
+#upload-photo {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+@media (max-width: 768px) {
+    .header-text-2 {
+        font-size: 300%;
+    }
+
+    .header-text-3 {
+        font-size: 90%;
+    }
+}
+

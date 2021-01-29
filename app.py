@@ -1,11 +1,11 @@
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for, jsonify
 import pymongo
 from flask_pymongo import PyMongo
 from libs.constants import MONGODB
 
 mongo = PyMongo()
 app = Flask(__name__)
-app.config["MONGO_URI"] = MONGODB
+app.config["MONGO_URI"] = "mongodb+srv://admin:admin@cluster0.ga0ld.mongodb.net/Database"
 mongo.init_app(app)
 
 
@@ -22,7 +22,13 @@ def index():
             msg_image = request.files['msg_image']
             mongo.save_file(msg_image.filename, msg_image)
             mongo.db.image_file.insert({'image_name' : msg_image.filename})
-        return render_template('index.html', msg = msg_txt) #do this for image, text and audio seperately
+
+        if msg_txt:
+            newMsg = msg[::-1]
+
+            return jsonify({'msg' : newMsg})
+        return jsonify({'error': 'Missing Data!'})
+        # return render_template('index.html', msg = msg_txt) #do this for image, text and audio seperately
         # return 'Done'
 
 

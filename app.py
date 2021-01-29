@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, url_for, jsonify
 import pymongo
 from flask_pymongo import PyMongo
-from libs.constants import MONGODB
+# from libs.constants import MONGODB
 
 mongo = PyMongo()
 app = Flask(__name__)

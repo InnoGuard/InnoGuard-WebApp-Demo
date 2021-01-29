@@ -150,7 +150,22 @@ body {
     border:none;
     padding: 7px;
     width: 37px;
-    height: 37px;
+    height: 50px;
+    fill: white;
+}
+
+input[type="button"], input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+#sendbtn {
+    color: white;
 }
 
 /* #success li {

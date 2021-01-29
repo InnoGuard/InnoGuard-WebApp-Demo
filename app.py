@@ -24,7 +24,7 @@ def index():
             mongo.db.image_file.insert({'image_name' : msg_image.filename})
 
         if msg_txt:
-            newMsg = msg[::-1]
+            newMsg = msg_txt[::-1]
 
             return jsonify({'msg' : newMsg})
         return jsonify({'error': 'Missing Data!'})

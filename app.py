@@ -15,18 +15,19 @@ def index():
         return render_template('index.html')
     elif request.method == 'POST':
         msg_txt = request.form['msg_txt']
-        # adding text message to the database
-        mongo.db.text_messages.insert({'text' : msg_txt})
+        # adding text message to the database  TO DO
+        # mongo.db.text_messages.insert({'text' : msg_txt})
         # adding image to the database
-        if 'msg_image' in request.files:
-            msg_image = request.files['msg_image']
-            mongo.save_file(msg_image.filename, msg_image)
-            mongo.db.image_file.insert({'image_name' : msg_image.filename})
+        # if 'msg_image' in request.files:
+        #     msg_image = request.files['msg_image']
+        #     mongo.save_file(msg_image.filename, msg_image)
+        #     mongo.db.image_file.insert({'image_name' : msg_image.filename})
 
         if msg_txt:
-            newMsg = msg_txt[::-1]
+            newMsg = msg_txt[::1]
 
-            return jsonify({'msg' : newMsg})
+            return jsonify({'msg_txt' : newMsg})
+
         return jsonify({'error': 'Missing Data!'})
         # return render_template('index.html', msg = msg_txt) #do this for image, text and audio seperately
         # return 'Done'

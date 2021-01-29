@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="../static/style.css">
   <link rel="stylesheet" href="../static/assets/css/typing.css">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="{{ url_for('static', filename='form.js') }}"></script>
 
 </head>
@@ -447,11 +448,16 @@
                     <!-- %for item in rows['orders']:
                       <td>{{item}}</td>
                     %end -->
-
-                    <div class="messages__item messages__item--operator">
-                        <!-- Put sent text here -->
-                        {{msg}}
+                    <div>
+                      <ul id='success'>
+                        <!-- Textt Messages go here -->
+                      </ul>
                     </div>
+                    <!-- <div class="messages__item"> -->
+                    <!-- <ul id='success'></ul> -->
+                        <!-- Put sent text here -->
+                        <!-- {{msg}} -->
+                    <!-- </div> -->
                     <!-- <div class="messages__item messages__item--visitor">
                         Need your help, I need a developer in my site.
                     </div>
@@ -474,6 +480,7 @@
                      <ol id="recordingsList"></ol> -->
 
                 </div>
+                <div id="errorAlert" class="alert alert-danger" role = "alert" style="display:none;"></div>
             </div>
             <div class="chatbox__footer">
                 <!-- <button type="button"><i class="far fa-grin-beam"></i></button>
@@ -491,7 +498,8 @@
 
                   <input name="msg_txt" type="text" id="msg_txt" placeholder="Write a message...">
                   <!-- <p class="imgButton chatbox__send--footer">Send</p> -->
-                  <input class="chatbox__send--footer" type="submit" value="Send">
+                  <!-- <input class="chatbox__send--footer" type="submit" value="Send"> -->
+                  <input class="chatbox__send--footer" id="sendbtn" type="button" value="Send">
                   
                   <label for="upload-photo"><img class="imgButton" src="../static/images/icons/attachment.svg" alt=""></label>
                   <input type="file" name="msg_image" id="upload-photo" accept="image/*"/>

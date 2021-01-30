@@ -8,6 +8,8 @@ const chatbox = new InteractiveChatbox(chatButton, chatContent, icons);
 chatbox.display();
 chatbox.toggleIcon(false, chatButton);
 
+
+
 // Allow Recording
 
 //webkitURL is deprecated but nevertheless
@@ -43,9 +45,11 @@ function startRecording() {
     /*
         Disable the record button until we get a success or fail from getUserMedia() 
     */
-   
-   recordButton.disabled = true;
-   stopButton.disabled = false;
+    
+    recordButton.disabled = true;
+    recordButton.style.display = "none";
+    stopButton.disabled = false;
+    stopButton.style.display = "block";
 //    pauseButton.disabled = false
 
    /*
@@ -111,7 +115,9 @@ function stopRecording() {
 
     //disable the stop button, enable the record too allow for new recordings
     stopButton.disabled = true;
+    stopButton.style.display = "block";
     recordButton.disabled = false;
+    recordButton.style.display = "none";
     // pauseButton.disabled = true;
 
     //reset button just in case the recording is stopped while paused

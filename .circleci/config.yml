@@ -41,5 +41,5 @@ jobs:
       - run:
           name: Run Flask App
           # This assumes pytest is installed via the install-package step above
-          command: sudo python app.py
+          command: python app.py
 

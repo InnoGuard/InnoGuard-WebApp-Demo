@@ -173,6 +173,17 @@ input[type="button"], input[type="submit"], input[type="reset"] {
     padding-bottom: 5px;
 }
 
+.preview{
+    display: none;
+ }
+
+ #recordingsList {
+    width: 10px;
+    /* background: var(--primary); */
+    list-style-type: none;
+    margin-left: 50px;
+ }
+
 /* #success li {
     margin: 0 0 5px 0;
 } */

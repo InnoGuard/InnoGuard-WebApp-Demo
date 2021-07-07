@@ -473,6 +473,12 @@
                       <ul id='success'>
                         <!-- Textt Messages go here -->
                       </ul>
+                        <div class='preview messages__item messages__item--operator'>
+                          <!-- HACK -->
+                          <!-- <img src="/static/images/uploads/racy.png" id="img" width="150" height="250">  -->
+                      </div>
+                      <!-- HACK -->
+                      <ul id="recordingsList"></ul>
                     </div>
                     <!-- <div class="messages__item"> -->
                     <!-- <ul id='success'></ul> -->
@@ -485,11 +491,11 @@
                     <div class="messages__item messages__item--operator">
                         Hi... What is it? I'm a front-end developer, yay!
                     </div> -->
-                    <div class="messages__item messages__item--typing">
+                    <!-- <div class="messages__item messages__item--typing">
                         <span class="messages__dot"></span>
                         <span class="messages__dot"></span>
                         <span class="messages__dot"></span>
-                    </div>
+                    </div> -->
 
                     <!-- <div id="controls">
                       <button id="recordButton">Record</button>
@@ -502,15 +508,16 @@
 
                 </div>
                 <div id="errorAlert" class="alert alert-danger" role = "alert" style="display:none;"></div>
-            </div>
+            </div> 
             <div class="chatbox__footer">
                 <!-- <button type="button"><i class="far fa-grin-beam"></i></button>
                 <i class="fas fa-microphone-alt"></i>
                 <input type="text" placeholder="Write a message...">
                 <p class="chatbox__send--footer">Send</p>
                 <i class="fas fa-paperclip"></i> -->
-                <ol id="recordingsList"></ol>
-                <form method="POST" class="form-inline" action="/" enctype="multipart/form-data">
+
+                <!-- <ol id="recordingsList"></ol> -->
+                <form method="POST" id="IGuploads" class="form-inline" action="/" enctype="multipart/form-data">
                   <img class="imgButton" src="../static/images/icons/emojis.svg" alt="">
                   <div id="controls">
                     <img id="recordButton" class="imgButton" src="../static/images/icons/microphone_start.svg" alt="">
@@ -534,6 +541,256 @@
     </div>
 </div>
 <!-- ChatBox Demo -->
+
+<!-- Image Detection Modal -->
+<div class="modal fade" id="googleVisionModal" tabindex="-1" role="dialog" aria-labelledby="googleVisionModal"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Google's Vision API Results</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Violence: UNLIKELY</li>
+        <li class="list-group-item">Medical: UNLIKELY</li>
+        <li class="list-group-item">Adult: UNLIKELY</li>
+        <li class="list-group-item">Racy: VERY LIKELY</li>
+        <li class="list-group-item">Spoofed: UNLIKELY</li>
+      </ul>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tisane Results Modal -->
+<div class="modal fade" id="tisaneModal" tabindex="-1" role="dialog" aria-labelledby="tisaneModal"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tisane API Results</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-2 h5">Text: 'Go die you fat person!'</h5>
+        </div>
+        <p class="mb-2">Classified as: Abuse. <br>
+          Type: 'personal_attack' <br>
+          Severity: 'medium' <br>
+          Tags : ['death'] :- 'type': 'personal_attack', 'severity': 'high' <br> 
+          Sentiment Expressions: 'ppolarity': 'negative' <br>
+        </p>
+
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tisane Results Modal -->
+<div class="modal fade" id="tisaneModal" tabindex="-1" role="dialog" aria-labelledby="tisaneModal"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tisane API Results</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-2 h5">Text: 'Go die you fat person!'</h5>
+        </div>
+        <p class="mb-2">Classified as: Abuse. <br>
+          Type: 'personal_attack' <br>
+          Severity: 'medium' <br>
+          Tags : ['death'] :- 'type': 'personal_attack', 'severity': 'high' <br> 
+          Sentiment Expressions: 'polarity': 'negative' <br>
+        </p>
+
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tisane Results Modal -->
+<div class="modal fade" id="tisaneModal2" tabindex="-1" role="dialog" aria-labelledby="tisaneModal2"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tisane API Results</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-2 h5">Text: 'You're fat and ugly!'</h5>
+        </div>
+        <p class="mb-2">Classified as: Abuse. <br>
+          Type: 'personal_attack' <br>
+          Severity: 'medium' <br>
+          Sentiment Expressions: 'polarity': 'negative' <br>
+          Reasons: 'displeasing' <br>
+          Targets: 'appearance' <br>
+        </p>
+
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tisane Results Modal -->
+<div class="modal fade" id="tisaneModal3" tabindex="-1" role="dialog" aria-labelledby="tisaneModal3"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tisane API Results</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-2 h5">Text: 'Asians are dumb'</h5>
+        </div>
+        <p class="mb-2">Classified as: Abuse. <br>
+          Type: 'bigotry' <br>
+          Severity: 'high' <br>
+          Sentiment Expressions: 'polarity': 'negative' <br>
+          Reasons: 'unintelligent' <br>
+        </p>
+
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tisane Results Modal -->
+<div class="modal fade" id="tisaneModal4" tabindex="-1" role="dialog" aria-labelledby="tisaneModal4"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tisane API Results</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-2 h5">Text: 'Take off your clothes'</h5>
+        </div>
+        <p class="mb-2">Classified as: Abuse. <br>
+          Topics: 'clothing' <br>
+          Type: 'sexual_advances' <br>
+          Severity: 'high' <br>
+        </p>
+
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tisane Results Modal -->
+<div class="modal fade" id="tisaneModal5" tabindex="-1" role="dialog" aria-labelledby="tisaneModal5"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tisane API Results</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-2 h5">Text: 'Buss ah wine!'</h5>
+        </div>
+        <p class="mb-2">entities_summary: <br>
+          Type: 'person' <br>
+          name: 'Buss ah' <br>
+        </p>
+
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tisane Results Modal -->
+<div class="modal fade" id="tisaneModal6" tabindex="-1" role="dialog" aria-labelledby="tisaneModal6"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tisane API Results</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-2 h5">Text: 'Everyone hates you and you're a nuisance'</h5>
+        </div>
+        <p class="mb-2">Classified as: Abuse. <br>
+          Type: 'personal_attack' <br>
+          Severity: 'high' <br>
+          Sentiment Expressions: 'polarity': 'negative' <br>
+        </p>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Footer -->
 <footer class="page-footer mt-5 font-small elegant-color">

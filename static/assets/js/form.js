@@ -5,24 +5,77 @@ function SendData() {
             // put images and audio next
         },
         type : 'POST',
-        url : '/'
+        url : '/',
     })
     .done(function(data) {
         if (data.error) {
             $('#errorAlert').text(data.error).show();
-            $('#success'.hide());
+            $('#success').hide();
         }
         else {
             //Now construct a quick list element
             var li = "<li class='messages__item messages__item--operator'>" + data.msg_txt + "</li>";
             //Now use appendChild and add it to the list!
             $('#success').append(li).show();
-            // do code for modal here, so as soon as something is sent, it checks it
+            // do code for modal here, so as soon as something is sent, it checks 
+            // TODO: SEND THE TEST TO TISANE API, GRAB RESULTS AND DISPLAY IN MODAL
             // $('#success').text(data.msg_txt).show();
             $('#errorAlert').hide();
+            if (data.msg_txt == 'Go die you fat person!') {
+                $('#tisaneModal').modal('show');
+            }
+            if (data.msg_txt == "You're fat and ugly!") {
+                $('#tisaneModal2').modal('show');
+            }
+            if (data.msg_txt == 'Asians are dumb') {
+                $('#tisaneModal3').modal('show');
+            }
+            if (data.msg_txt == 'Take off your clothes') {
+                $('#tisaneModal4').modal('show');
+            }
+
+            if (data.msg_txt == 'Buss ah wine!') {
+                $('#tisaneModal5').modal('show');
+            }
             $("#msg_txt").val('');
         }
     });
+}
+
+function SendFile() {
+    // var form_data = new FormData(document.getElementById("#IGuploads"));
+    var form_data = new FormData($('#IGuploads')[0]);
+    //fd.append("CustomField", "This is some extra data");
+    $.ajax({
+        url: '/',  
+        type: 'POST',
+        data: form_data,
+        success:function(response){
+            if(response != 0){
+                // $("#img").attr("src",response); 
+                $(".preview").show(); // Display image element
+                $('#googleVisionModal').modal('show');
+             }
+            //  else{
+            //     alert('file not uploaded');
+            //  }
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+    })
+    // .done(function(data) {  
+    //     if (data.error) {
+    //         $('#errorAlert').text(data.error).show();
+    //         $(".preview img").hide();
+    //         // $('#success'.hide());
+    //     }
+    //     else {
+    //         $(".preview img").show();
+    //         // $('.preview').html(data);
+    //         $('#errorAlert').hide();
+    //     }
+    // });
 }
 
 $(document).ready(function() {
@@ -45,7 +98,8 @@ $(document).ready(function() {
 
     // If the "Send" button is clicked, send data
     $("#sendbtn").on('click', function() {
-        SendData();
+        // SendData();
+        SendFile();
     })
 
     // $('form').on('submit', function(event) {
@@ -78,3 +132,43 @@ $(document).ready(function() {
 
     // });
 });
+
+
+// $(document).ready(function (e) {
+//     $('#upload').on('click', function () {
+//         var form_data = new FormData();
+//         var ins = document.getElementById('multiFiles').files.length;
+        
+//         if(ins == 0) {
+//             $('#msg').html('<span style="color:red">Select at least one file</span>');
+//             return;
+//         }
+        
+//         for (var x = 0; x < ins; x++) {
+//             form_data.append("files[]", document.getElementById('multiFiles').files[x]);
+//         }
+        
+//         $.ajax({
+//             url: '/', // point to server-side URL
+//             dataType: 'json', // what to expect back from server
+//             cache: false,
+//             contentType: false,
+//             processData: false,
+//             data: form_data,
+//             type: 'POST',
+//             success: function (response) { // display success response
+//                 $('#msg').html('');
+//                 $.each(response, function (key, data) {							
+//                     if(key !== 'message') {
+//                         $('#msg').append(key + ' -> ' + data + '<br/>');
+//                     } else {
+//                         $('#msg').append(data + '<br/>');
+//                     }
+//                 })
+//             },
+//             error: function (response) {
+//                 $('#msg').html(response.message); // display error response
+//             }
+//         });
+//     });
+// });

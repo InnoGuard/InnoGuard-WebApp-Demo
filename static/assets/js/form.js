@@ -1,7 +1,85 @@
+function sendResponse() {
+    // var xhr = new XMLHttpRequest();
+    // xhr.open('GET', '/tisane', true);
+    // xhr.setRequestHeader('Content-Type', 'application/json');
+    // // console.log( $('#msg_txt').val())
+    // console.log("state", xhr.onreadystatechange)
+    // xhr.send(JSON.stringify({
+    //     data: $('#msg_txt').val()
+    // }))
+
+    // response = xhr.response
+    // $('.modal-body').html(response);
+    // $('#tisaneModal').modal('show');
+    
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        url: "/tisane",
+        data: {
+            msg_txt: $('#msg_txt').val(),
+        },
+        success: function(data) {
+            // console.log(data)
+            tisane_result = data.result
+            if(tisane_result.abuse)
+            {
+                formatted_result = {
+                    type : tisane_result.abuse[0].type,
+                    severity : tisane_result.abuse[0].severity,
+                    tags : tisane_result.abuse[0].tags
+                }
+            }
+            else formatted_result = "No abuse detected."
+            console.log(formatted_result)
+            //Now construct a quick list element
+            var li = "<li class='messages__item messages__item--operator'>" + data.msg_txt + "</li>";
+            //Now use appendChild and add it to the list!
+            $('#success').append(li).show();
+            $("#msg_txt").val('');
+            $('.modal-body').html(JSON.stringify(formatted_result));
+            $('#tisaneModal').modal('show');
+        },
+      });
+}
+
+function sendImage() {
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        url: "/gcv",
+        data: {
+            msg_image: $('#msg_image').val(),
+        },
+        success: function(data) {
+            // console.log(data)
+            gcv_result = data.result
+            if(gcv_result)
+            {
+                formatted_result = {
+                    type : gcv_result,
+                }
+            }
+            else formatted_result = "No abuse detected."
+            console.log(formatted_result)
+            // //Now construct a quick list element
+            // var li = "<li class='messages__item messages__item--operator'>" + data.msg_txt + "</li>";
+            // //Now use appendChild and add it to the list!
+            // $('#success').append(li).show();
+            // $("#msg_txt").val('');
+            $('.modal-body').html(JSON.stringify(formatted_result));
+            $('#tisaneModal').modal('show');
+        },
+      });
+}
+
+
+
 function SendData() {
     $.ajax({
         data : {
             msg_txt: $('#msg_txt').val(),
+            response: data.response
             // put images and audio next
         },
         type : 'POST',
@@ -21,22 +99,24 @@ function SendData() {
             // TODO: SEND THE TEST TO TISANE API, GRAB RESULTS AND DISPLAY IN MODAL
             // $('#success').text(data.msg_txt).show();
             $('#errorAlert').hide();
-            if (data.msg_txt == 'Go die you fat person!') {
-                $('#tisaneModal').modal('show');
-            }
-            if (data.msg_txt == "You're fat and ugly!") {
-                $('#tisaneModal2').modal('show');
-            }
-            if (data.msg_txt == 'Asians are dumb') {
-                $('#tisaneModal3').modal('show');
-            }
-            if (data.msg_txt == 'Take off your clothes') {
-                $('#tisaneModal4').modal('show');
-            }
+            $('.modal-body').html(data.response);
+            $('#tisaneModal').modal('show');
+            // if (data.msg_txt == 'Go die you fat person!') {
+            //     $('#tisaneModal').modal('show');
+            // }
+            // if (data.msg_txt == "You're fat and ugly!") {
+            //     $('#tisaneModal2').modal('show');
+            // }
+            // if (data.msg_txt == 'Asians are dumb') {
+            //     $('#tisaneModal3').modal('show');
+            // }
+            // if (data.msg_txt == 'Take off your clothes') {
+            //     $('#tisaneModal4').modal('show');
+            // }
 
-            if (data.msg_txt == 'Buss ah wine!') {
-                $('#tisaneModal5').modal('show');
-            }
+            // if (data.msg_txt == 'Buss ah wine!') {
+            //     $('#tisaneModal5').modal('show');
+            // }
             $("#msg_txt").val('');
         }
     });
@@ -47,14 +127,16 @@ function SendFile() {
     var form_data = new FormData($('#IGuploads')[0]);
     //fd.append("CustomField", "This is some extra data");
     $.ajax({
-        url: '/',  
+        url: '/gcv',  
         type: 'POST',
         data: form_data,
         success:function(response){
             if(response != 0){
                 // $("#img").attr("src",response); 
                 $(".preview").show(); // Display image element
-                $('#googleVisionModal').modal('show');
+                $('.modal-body').html(JSON.stringify(response));
+                $('#tisaneModal').modal('show');
+                // $('#googleVisionModal').modal('show');
              }
             //  else{
             //     alert('file not uploaded');
@@ -84,7 +166,7 @@ $(document).ready(function() {
     $('#msg_txt').keypress(function(e) {
         if(e.which == 13) {
             // alert('You pressed enter!');
-            SendData();
+            sendResponse();
             e.preventDefault();
         }
     });

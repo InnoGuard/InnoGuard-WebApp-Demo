@@ -135,7 +135,7 @@ function stopRecording() {
 
 function createDownloadLink(blob) {
 
-    var url = URL.createObjectURL(blob);
+    var file_url = URL.createObjectURL(blob);
     var au = document.createElement('audio');
     var li = document.createElement('li');
     var link = document.createElement('a');
@@ -145,43 +145,134 @@ function createDownloadLink(blob) {
 
     //add controls to the <audio> element
     au.controls = true;
-    au.src = url;
+    au.src = file_url;
 
     //save to disk link
-    link.href = url;
+    link.href = file_url;
     link.download = filename+".wav"; //download forces the browser to donwload the file using the  filename
     link.innerHTML = "Save to disk";
+
+    // var fd = new FormData();
+    // fd.append("audio_data", blob, filename);
+    // console.log("au", au)
+    // console.log("fd", fd)
+    // console.log("blob", blob)
+
+    // // data: {"audio_file": blob},
+
+    // $.ajax({
+    //     type: "POST",
+    //     dataType: "multitype/form-data",
+    //     url: "/text2speech",
+    //     processData: false,
+    //     ContentType: false,
+    //     data: blob,
+    //     success: function(data) {
+    //         console.log("data", data)
+    //         // $.ajax({
+    //         //     type: "POST",
+    //         //     dataType: "json",
+    //         //     url: "/tisane",
+    //         //     data: {
+    //         //         msg_txt: data.result,
+    //         //     },
+    //         //     success: function(data) {
+    //         //         console.log(data)
+    //         //         tisane_result = data.result
+    //         //         if(tisane_result.abuse)
+    //         //         {
+    //         //             formatted_result = {
+    //         //                 type : tisane_result.abuse[0].type,
+    //         //                 severity : tisane_result.abuse[0].severity,
+    //         //                 tags : tisane_result.abuse[0].tags
+    //         //             }
+    //         //         }
+    //         //         else formatted_result = "No abuse detected."
+    //         //         console.log(formatted_result)
+    //         //         //Now construct a quick list element
+    //         //         var li = "<li class='messages__item messages__item--operator'>" + data.msg_txt + "</li>";
+    //         //         //Now use appendChild and add it to the list!
+    //         //         $('#success').append(li).show();
+    //         //         $("#msg_txt").val('');
+    //         //         $('.modal-body').html(JSON.stringify(formatted_result));
+    //         //         $('#tisaneModal').modal('show');
+    //         //     },
+    //         //   });
+    //     },
+    //   });
 
     //add the new audio element to li
     li.appendChild(au);
 
-    //add the filename to the li
+    // // add the filename to the li
     // li.appendChild(document.createTextNode(filename+".wav "))
 
-    //add the save to disk link to li
+    // // add the save to disk link to li
     // li.appendChild(link);
 
-    //upload link
-    var upload = document.createElement('a');
-    upload.href="#";
-    upload.innerHTML = "Upload";
-    upload.addEventListener("click", function(event){
-          var xhr=new XMLHttpRequest();
-          xhr.onload=function(e) {
-              if(this.readyState === 4) {
-                  console.log("Server returned: ",e.target.responseText);
-              }
-          };
-          var fd=new FormData();
-          fd.append("audio_data",blob, filename);
-          xhr.open("POST","/",true);
-          xhr.send(fd);
-    })
+    sendAudio(blob, filename);
+    // sendTranscript();
+
+    // // upload link
+    // var upload = document.createElement('a');
+    // upload.href="#";
+    // upload.innerHTML = "Upload";
+    // upload.addEventListener("click", function(event){
+    //       var xhr=new XMLHttpRequest();
+    //       xhr.onload=function(e) {
+    //           if(this.readyState === 4) {
+    //               console.log("Server returned: ",e.target.responseText);
+    //           }
+    //       };
+    //       var fd=new FormData();
+    //       fd.append("audio_data", blob, filename);
+    //       xhr.open("POST","/text2speech", true);
+    //       xhr.send(fd);
+    // })
     li.appendChild(document.createTextNode (" "))//add a space in between
     // li.appendChild(upload)//add the upload link to li
 
     //add the li element to the ol
     recordingsList.appendChild(li);
 
-    $('#tisaneModal6').modal('show');
+    // $('#tisaneModal6').modal('show');
+}
+
+function sendAudio(blob, filename) {
+    var xhr=new XMLHttpRequest();
+    xhr.onload=function(e) {
+        if(this.readyState === 4) {
+            console.log("Server returned: ", e.target.responseText);
+            displayTranscript(e.target.responseText)
+        }
+    };
+    var fd=new FormData();
+    fd.append("audio_data", blob, filename);
+    xhr.open("POST","/text2speech", true);
+    response = xhr.send(fd);
+    
+}
+
+function displayTranscript(data) {
+    console.log("data", data)
+    tisane_result = JSON.parse(data).result
+    console.log("tisane result", tisane_result)
+    if(tisane_result.abuse)
+    {
+        formatted_result = {
+            type : tisane_result.abuse[0].type,
+            severity : tisane_result.abuse[0].severity,
+            tags : tisane_result.abuse[0].tags
+        }
+    }
+    else formatted_result = "No abuse detected."
+    console.log(formatted_result)
+    //Now construct a quick list element
+    // var li = "<li class='messages__item messages__item--operator'>" + data.msg_txt + "</li>";
+    //Now use appendChild and add it to the list!
+    // $('#success').append(li).show();
+    // $("#msg_txt").val('');
+    $('.modal-body').html(JSON.stringify(formatted_result));
+    $('#tisaneModal').modal('show');
+
 }

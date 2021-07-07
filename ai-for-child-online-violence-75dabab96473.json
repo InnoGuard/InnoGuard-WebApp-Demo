@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "ai-for-child-online-violence",
+  "private_key_id": "75dabab964739a9066ea50b8ef50cff0a78a11b1",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDKCRUhge+gmliY\nJWXgQ6u+UVMH3uNIsovNFM44LrSkg5QoEfckxNEldy+ycttaOaPjNuJEEPRKgbQR\niXemLHAoHsxmjIstT/wJwhlEVRGOfrze5NUQq+Fc5XlytcEMAH2fuqgmDhHsmkWU\n8apQGt1LQr4TGb5FL1OFOWbYGcXr4slh1up5NdP2RcPzLSxw61SGOJKGcsCdCx+n\nRfsxqSqnBRSMvrFZLQQNJ3vi8eAJfkDAbUcqH4da2C2AOzq/wng43MIecZcEsIFl\nzCblDO8lmBvHhLM5J+ymO5W/PtywTJo/GMcGcDyABVF3d22Ob/4xOR6edZxh4G4D\nr7a+W3uvAgMBAAECggEAFyITGVMXbPw/SKx/jb4x3AjTyQLsY1aOS10mf6hZZrzq\nKexksAEZMYEEJRqhoyMWcN3H6qNGVYGkbJ2g5ZYRAYcFQHi3NukBotxmqDxVVkuM\ntLje7JnBpDFiRpApGoaz26YzuqfBxaWkcfl51tI8pHFv8h/weVuB5K8952CMGQYa\nkkhJQlca4JztSLlmSWGOyY1ZkRlS+Bm4qdk59OYnDqJfmvjEBjvJXxLiBaT/L5HR\nihDbY6ZtswnB+KG2lLWwDcaLwux9tck1FDs2UsQfkbZrSYoh7DwC7N9VyRnF+sr/\nxWetjGd4uruWPszu4TaRdzeso7AqrgQq6pv+LCxvgQKBgQDnXp7mERSOyKKzuhcW\nu5QlxTa7v3wG3D9Mz64p4wLrkSLE/91aBgeO1+SvYs2qRrHBbnmEPKy2zEZS3WBl\nQJacMfSTrHbpv+RaMpAQ2d4c4KjfwWJFbwqJA7yXEd79iV7wFITjQsATwTnborBp\nxmphyxSRIomlsZiIviCXTUL5WwKBgQDfiwk6FSZHGSyv9kP4I1VENWdCXG0I2gSQ\nrGgzE7HY2YUIIrOGTSYEZOCChVxEV8eMA9CkNORNxxU7KzCO3S741qXPJUeedAy8\n2Skq2sraQgBCB5ZNXhvHxELcjBfaFW2TxeN7Xok6rtFuYX8K8MYzrD6fG/Zj60Vo\nUMk6dI4DPQKBgBjW88BHfSmHKNCa3fe208TqU2H8wNgLtVANy+j7UkjwIAd+YMlV\ndGJFk2uw89ugE11s+ubTjMdjTvl+gubb9E94nYVtMqcNzvpQC1+DxHDdPcQoAuDp\ndvwWxpyBcqtNoD+uNEYh2HVGfWuzH7V7c9hj8SVTy+taEcI8h0s3JEWZAoGAdrGu\nboa4UlwNnEjYgjLQnWz1rQjCZEbO0bqZgTVd41RsDIvQYukn3IFrrCH/gdJSBAgq\nimYDK0EgBtDB8bmDrWDbnYef5YSdFtD/yN9vgkA1PtokdmQXwBR3o/9G0uc5zZLv\nXJwvpVcZoNBn0nlR5DH69iS0yQ0tR1xN3JnypckCgYBGhb9k2CwVVVxhs2GDlPBh\nlDaKBhf+8RkrSxON6YorRIBqo1xYlJSfNTNghHsiFdIQDefB2+UFejdPBWCdcA+W\nQMKsR3FCEwUnok3sb2+HJpEfTHnsEKVZS4+Q4p7i72ggloF/enYAAyDzv616MYBp\nnVDSBFPeTN9JyorAOjbHqA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "innoguard@ai-for-child-online-violence.iam.gserviceaccount.com",
+  "client_id": "105654846394823302459",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/innoguard%40ai-for-child-online-violence.iam.gserviceaccount.com"
+}
